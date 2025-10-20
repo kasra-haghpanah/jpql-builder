@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<clientProperties>
+    <datastores>
+        <dataStore>
+            <name>mongodb</name>
+            <connection>
+                <properties>
+                    <property name="spark.master" value="local" />
+                    <property name="spark.app.name" value="Spark shell" />
+                    <property name="spark.driver.allowMultipleContexts" value="true" />
+
+                    <!--
+                    <property name="spark.mongodb.output.database" value="db" />
+                    <property name="spark.mongodb.input.uri" value="mongodb://admin:pass@127.0.0.1:27017/db" />
+                    -->
+
+                    <!--  mongodb://mongodb1.example.com:27317,mongodb2.example.com:27017/?replicaSet=mySet&authSource=authDB  -->
+
+<!--
+                    <property name="spark.mongodb.output.collection" value="myCollection" />
+                    -->
+                    <!--<property name="spark.mongodb.output.database" value="loan2Core" />-->
+                </properties>
+                <servers>
+                    <server>
+                        <host>localhost</host>
+                        <port>27017</port>
+                    </server>
+                </servers>
+            </connection>
+        </dataStore>
+    </datastores>
+</clientProperties>

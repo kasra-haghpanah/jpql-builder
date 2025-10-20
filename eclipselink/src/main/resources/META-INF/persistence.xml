@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+
+    <persistence-unit  transaction-type="RESOURCE_LOCAL" name="kafka">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>java:comp/env/jdbc/kafka</jta-data-source>
+
+
+        <class>com.tosan.bpms.model.sql.Evaluation</class>
+
+        <class>com.tosan.bpms.model.sql.MaterialOfProject</class>
+        <class>com.tosan.bpms.model.sql.Portfolio</class>
+
+        <class>com.tosan.bpms.model.sql.Project</class>
+        <class>com.tosan.bpms.model.sql.Employee</class>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <class>com.tosan.bpms.model.sql.OngoingPrjct</class>
+
+
+
+
+
+
+
+
+        <class>com.tosan.bpms.model.sql.LocationDetails</class>
+        <class>com.tosan.bpms.model.sql.LicenseDetails</class>
+
+
+
+
+        <class>com.tosan.bpms.model.sql.Reception</class>
+
+        <class>com.tosan.bpms.model.sql.User</class>
+
+
+
+
+
+
+
+
+
+
+        <class>com.tosan.bpms.model.sql.Group</class>
+
+
+
+        <class>com.tosan.bpms.model.sql.Article</class>
+
+        <class>com.tosan.bpms.model.sql.Economic</class>
+        <class>com.tosan.bpms.model.sql.File</class>
+        <class>com.tosan.bpms.model.sql.Industry</class>
+        <class>com.tosan.bpms.model.sql.MaterialOfProject</class>
+        <class>com.tosan.bpms.model.sql.Measurment</class>
+
+        <class>com.tosan.bpms.model.sql.PortfolioLicense</class>
+        <class>com.tosan.bpms.model.sql.PortfolioLocation</class>
+        <class>com.tosan.bpms.model.sql.ProductsOfProject</class>
+
+
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.p6spy.engine.spy.P6SpyDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:p6spy:mysql://localhost:3306/kafka"/>
+
+<!--
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/kafka"/>
+-->
+
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="123"/>
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+            <!--<property name="eclipselink.create-ddl-jdbc-file-name" value="createDDL_ddlGeneration.jdbc"/>
+            <property name="eclipselink.drop-ddl-jdbc-file-name" value="dropDDL_ddlGeneration.jdbc"/>-->
+            <!--<property name="eclipselink.ddl-generation.output-mode" value="both"/>-->
+            <property name="eclipselink.cache.shared.default" value="false"/>
+            <property name="eclipselink.cache.size.default" value="1000"/>
+            <property name="eclipselink.orm.throw.exceptions" value="true"/>
+            <!--<property name="eclipselink.logging.level" value="ALL"/>
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>-->
+            <property name="eclipselink.session.customizer" value="com.tosan.bpms.framework.orm.repository.UUIDSequence"/>
+            <!--  https://www.eclipse.org/forums/index.php/t/881921/  -->
+        </properties>
+
+    </persistence-unit>
+
+    <persistence-unit name="kafka_log" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>java:comp/env/jdbc/kafka_log</jta-data-source>
+
+        <class>com.tosan.bpms.model.sql.Log</class>
+        <class>com.tosan.bpms.model.sql.LogBox</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+
+            <property name="javax.persistence.jdbc.driver" value="com.p6spy.engine.spy.P6SpyDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:p6spy:mysql://localhost:3306/kafka_log"/>
+
+<!--
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/kafka_log"/>
+-->
+
+
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="123"/>
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+            <!--<property name="eclipselink.create-ddl-jdbc-file-name" value="createDDL_ddlGeneration2.jdbc"/>
+            <property name="eclipselink.drop-ddl-jdbc-file-name" value="dropDDL_ddlGeneration2.jdbc"/>-->
+           <!-- <property name="eclipselink.ddl-generation.output-mode" value="both"/>-->
+            <property name="eclipselink.cache.shared.default" value="false"/>
+            <property name="eclipselink.cache.size.default" value="1000"/>
+            <property name="eclipselink.orm.throw.exceptions" value="true"/>
+            <!--<property name="eclipselink.logging.level" value="ALL"/>
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>-->
+            <property name="eclipselink.session.customizer" value="com.tosan.bpms.framework.orm.repository.UUIDSequence"/>
+            <!--  https://www.eclipse.org/forums/index.php/t/881921/  -->
+        </properties>
+
+    </persistence-unit>
+
+
+
+    <!-- javax.persistenceence-unit name="spark_mongo_pu">
+            <provider>com.impetus.kundera.KunderaPersistence</provider>
+            <properties>
+                <property name="kundera.nodes" value="192.168.115.131" />
+                <property name="kundera.port" value="27017" />
+                <property name="kundera.keyspace" value="loan2Core" />
+                <property name="kundera.dialect" value="mongodb" />
+                <property name="kundera.client.lookup.class" value="com.impetus.client.mongodb.MongoDBClientFactory" />
+                <property name="kundera.cache.provider.class" value="com.impetus.kundera.cache.ehcache.EhCacheProvider" />
+                <property name="kundera.cache.config.resource" value="/ehcache-test.xml" />
+            </properties>
+      javax.persistenceence-unit>-->
+
+<!--
+
+ javax.persistenceence-unit name="spark_mongo_pu">
+        <provider>com.impetus.kundera.KunderaPersistence</provider>
+
+        <class>com.tosan.bpms.model.nosql.AddressNoSQL</class>
+        <class>com.tosan.bpms.model.nosql.Attachment</class>
+        <class>com.tosan.bpms.model.nosql.Contact</class>
+        <class>com.tosan.bpms.model.nosql.Email</class>
+        <class>com.tosan.bpms.model.nosql.GroupNoSQL</class>
+        <class>com.tosan.bpms.model.nosql.UserNoSQL</class>
+        <class>com.tosan.bpms.model.nosql.Person</class>
+        <properties>
+            <property name="kundera.nodes" value="192.168.56.1"/>
+            <property name="kundera.port" value="7077"/>
+            <property name="kundera.keyspace" value="db"/>
+            <property name="kundera.dialect" value="spark"/>
+            <property name="kundera.client" value="mongodb"/>
+            <property name="kundera.client.lookup.class" value="com.impetus.spark.client.SparkClientFactory"/>
+            <property name="kundera.client.property" value="E:/playProject/eclipselink/src/main/resources/KunderaSparkMongoProperties.xml"/>
+        </properties>
+
+
+        &lt;!&ndash; https://github.com/Impetus/Kundera/issues/737  &ndash;&gt;
+  javax.persistenceence-unit>
+-->
+
+</persistence>

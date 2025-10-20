@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.jpa.developers</groupId>
+        <artifactId>jpql-builder</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>eclipselink</artifactId>
+
+    <!--  com.tosan.bpms:jpql-maven-plugin:1.0.0:jpql   -->
+
+    <!--<packaging>maven-plugin</packaging>-->
+
+
+    <properties>
+
+        <guice.version>4.2.0</guice.version>
+        <mysql.version>5.1.36</mysql.version>
+        <eclipselink.version>2.6.0</eclipselink.version>
+        <guice-validator.version>1.2.0</guice-validator.version>
+        <hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
+        <javax.el.version>3.0.1-b08</javax.el.version>
+        <kundera.version>3.13</kundera.version>
+
+    </properties>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.jpa.developers</groupId>
+            <artifactId>jpql-maven-plugin</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.10</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.jpa.developers</groupId>
+            <artifactId>jpql-maven-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>${eclipselink.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>${guice.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-persist</artifactId>
+            <version>${guice.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ru.vyarus</groupId>
+            <artifactId>guice-validator</artifactId>
+            <version>${guice-validator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>${javax.el.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <finalName>${artifactId}</finalName>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <compilerVersion>1.8</compilerVersion>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <!-- Maven Plugin -->
+
+            <plugin>
+                <groupId>com.jpa.developers</groupId>
+                <artifactId>jpql-maven-plugin</artifactId>
+                <version>1.0.0</version>
+
+                <configuration>
+                    <enable>false</enable>
+                    <persistence>${project.basedir}/src/main/resources/META-INF/persistence.xml</persistence>
+                    <destPackage>com.tosan.bpms.framework.orm.repository.jpql</destPackage>
+                    <!-- NONE, EJB, SPRING, GUICE -->
+                    <dependencyInjectionType>GUICE</dependencyInjectionType>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jpql</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+            </plugin>
+
+            <!-- Maven Plugin -->
+
+        </plugins>
+
+    </build>
+
+
+</project>

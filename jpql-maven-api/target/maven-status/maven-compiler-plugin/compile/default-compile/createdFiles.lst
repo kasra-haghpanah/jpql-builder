@@ -1,0 +1,11 @@
+com\jpql\api\interfaces\ProcedureParameter.class
+com\jpql\api\annotations\Like$STATUS.class
+com\jpql\api\annotations\Like.class
+com\jpql\api\interfaces\Model.class
+com\jpql\api\annotations\LeftJoin.class
+com\jpql\api\interfaces\DTO.class
+com\jpql\api\enums\DependencyInjectionType.class
+com\jpql\api\interfaces\Parameter.class
+com\jpql\api\interfaces\QueryParameter.class
+com\jpql\api\interfaces\Statement.class
+com\jpql\api\interfaces\Cast.class

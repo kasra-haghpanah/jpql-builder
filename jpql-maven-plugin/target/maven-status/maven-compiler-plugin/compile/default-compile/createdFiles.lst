@@ -1,0 +1,8 @@
+com\jpql\plugin\Relation.class
+com\jpql\plugin\JPQLBuilder.class
+com\jpql\plugin\MetaData.class
+com\jpql\plugin\OneORMany.class
+com\jpql\plugin\JoinColumnDetail.class
+com\jpql\plugin\FileUtility.class
+com\jpql\plugin\Generator.class
+com\jpql\plugin\ManyToMany.class

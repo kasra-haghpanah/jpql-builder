@@ -1,0 +1,94 @@
+SELECT %s FROM com.tosan.bpms.model.sql.Evaluation Evaluation0  LEFT JOIN FETCH 
+Evaluation0.file1 File1 LEFT JOIN FETCH 
+Evaluation0.file2 File2 JOIN FETCH 
+Evaluation0.reception Reception3 JOIN FETCH 
+Reception3.portfolio Portfolio4 JOIN FETCH 
+Portfolio4.portfolioLicenses PortfolioLicense5 LEFT JOIN FETCH 
+PortfolioLicense5.file File7 JOIN FETCH 
+PortfolioLicense5.licenseDetails LicenseDetails8 LEFT JOIN FETCH 
+LicenseDetails8.file File10 JOIN FETCH 
+Portfolio4.portfolioLocations PortfolioLocation11 LEFT JOIN FETCH 
+PortfolioLocation11.file File13 JOIN FETCH 
+PortfolioLocation11.locationDetails LocationDetails14 LEFT JOIN FETCH 
+LocationDetails14.file File16 
+WHERE 1=1   
+AND 
+File1.extension = :File1extension 
+AND  
+( 
+   (  
+     PortfolioLicense5.portfolioLicenseId LIKE :PortfolioLicense5portfolioLicenseId   
+     AND 
+     File7.id LIKE :File7id  
+      ( 
+       (  
+        LicenseDetails8.licenseDetailId LIKE :LicenseDetails8licenseDetailId   
+        AND 
+        File10.id LIKE :File10id   
+        AND 
+        LicenseDetails8.address.addressLine1 LIKE :LicenseDetails8addressaddressLine1   
+        )
+       OR
+       (  
+        LicenseDetails8.licenseDetailId LIKE :LicenseDetails8licenseDetailId   
+        AND 
+        File10.id LIKE :File10id   
+        AND 
+        LicenseDetails8.address.addressLine1 LIKE :LicenseDetails8addressaddressLine1  
+        ) 
+      )  
+      AND 
+      PortfolioLicense5.licenseNumber LIKE :PortfolioLicense5licenseNumber   
+      AND 
+      PortfolioLicense5.licenseType LIKE :PortfolioLicense5licenseType  
+      ) 
+     OR
+     (  
+       PortfolioLicense5.portfolioLicenseId LIKE :PortfolioLicense5portfolioLicenseId   
+       AND 
+       File7.id LIKE :File7id  
+       AND  
+       ( 
+         (  
+           LicenseDetails8.licenseDetailId LIKE :LicenseDetails8licenseDetailId   
+           AND 
+           File10.id LIKE :File10id   
+           AND 
+           LicenseDetails8.address.addressLine1 LIKE :LicenseDetails8addressaddressLine1  
+         ) 
+       OR
+       (  
+        LicenseDetails8.licenseDetailId LIKE :LicenseDetails8licenseDetailId   
+        AND 
+        File10.id LIKE :File10id   
+        AND 
+        LicenseDetails8.address.addressLine1 LIKE :LicenseDetails8addressaddressLine1  
+        ) 
+      )  
+       AND 
+        PortfolioLicense5.licenseNumber LIKE :PortfolioLicense5licenseNumber   
+       AND 
+       PortfolioLicense5.licenseType LIKE :PortfolioLicense5licenseType  
+       ) 
+      ) 
+       AND  
+       (  
+         ( 
+          (  
+           LocationDetails14.locationDetailId LIKE :LocationDetails14locationDetailId   
+           AND 
+           File16.id LIKE :File16id   
+           AND 
+           LocationDetails14.address.addressLine1 LIKE :LocationDetails14addressaddressLine1  
+           ) 
+           OR
+           (  
+           LocationDetails14.locationDetailId LIKE :LocationDetails14locationDetailId   
+           AND 
+           File16.id LIKE :File16id   
+           AND 
+           LocationDetails14.address.addressLine1 LIKE :LocationDetails14addressaddressLine1  
+           ) 
+         )  ----------------------- AND
+           PortfolioLocation11.province LIKE :PortfolioLocation11province   
+           AND 
